@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<profiles version="21">
+    <profile kind="CodeFormatterProfile" name="custom" version="21">
+        <setting id="org.eclipse.jdt.core.formatter.lineSplit" value="150"/>
+        <setting id="org.eclipse.jdt.core.formatter.comment.line_length" value="150"/>
+    </profile>
+</profiles>
+
+<!-- Ce fichier sert à modifier certaines régles du formatter Java Red Hat 
+on pointe vers ce fichier dans .vscode/settings.json
+-->

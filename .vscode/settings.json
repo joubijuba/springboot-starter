@@ -1,0 +1,12 @@
+{
+    "java.configuration.updateBuildConfiguration": "automatic",
+    "java.import.maven.enabled": true,
+    "java.project.sourcePaths": [
+        "core-lib/src/main/java",
+        "core-lib/src/test/java",
+        "web-server/src/main/java",
+        "web-server/src/test/java"
+    ],
+    "java.format.settings.url": "${workspaceFolder}/.formatter.xml",
+    "java.format.settings.profile": "custom"
+}

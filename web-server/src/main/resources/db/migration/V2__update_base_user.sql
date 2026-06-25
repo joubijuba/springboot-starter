@@ -1,0 +1,3 @@
+ALTER TABLE users ADD salt varchar;
+
+ALTER TABLE users ALTER COLUMN salt SET NOT NULL;

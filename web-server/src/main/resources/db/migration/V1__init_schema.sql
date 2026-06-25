@@ -1,0 +1,4 @@
+CREATE TABLE users (
+    id VARCHAR(150) PRIMARY KEY CHECK (id LIKE '%@%.%'),
+    hash VARCHAR(250) NOT NULL
+);

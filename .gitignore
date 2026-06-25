@@ -1,0 +1,10 @@
+deploy/.terraform.lock.hcl
+deploy/terraform.tfstate
+deploy/terraform.tfstate.backup
+deploy/.terraform
+
+myKey.pem
+terraform.tfstate
+test.txt
+
+core-lib/target
