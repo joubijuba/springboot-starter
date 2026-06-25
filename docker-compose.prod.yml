@@ -19,7 +19,7 @@ services:
         container_name: springboot
         image: ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com/for_ec2:latest
         ports: 
-            - "80:8080" # Same port as the VPC opened port for HTTP
+            - "80:8080" # Same port as the VPC opened port for HTTP for EC2
         environment:
             SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/${POSTGRES_DB}
             SPRING_DATASOURCE_USERNAME: ${POSTGRES_USER}

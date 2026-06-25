@@ -28,7 +28,7 @@ terraform output
 terraform destroy
 ```
 
-- to destroy targeted 
+- to destroy targeted resource :
 ```bash
 terraform destroy -target resource_address
 ```

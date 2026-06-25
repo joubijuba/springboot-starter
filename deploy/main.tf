@@ -155,6 +155,8 @@ resource "aws_ecr_repository" "ecr_for_ec2" {
   image_scanning_configuration {
     scan_on_push = true // AWS will scan at each push if there are vulnerabilities within the images
   }
+
+  force_delete = true
 }
 
 // By default if we push an image with the same tag again, the previous one will be left untagged,
