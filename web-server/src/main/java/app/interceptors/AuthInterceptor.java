@@ -25,40 +25,26 @@ public class AuthInterceptor implements HandlerInterceptor {
     /**
      * Interceptor middleware to check token validity. Will throw if token is missing, invalid or expired
      */
-    // @Override
-    // public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
-    // Cookie[] cookies = request.getCookies();
-
-    // try {
-    // // Extract auth_token from cookies (will throw if cookies is null or empty)
-    // Cookie cookie = Arrays.stream(cookies)
-    // .filter(item -> item.getName().equals("auth_token"))
-    // .findFirst()
-    // .orElse(null);
-
-    // Claims claims = this.jwtService.decodeToken(cookie.getValue());
-
-    // // Now insert cookie content (proper claims object) into the request
-    // // TO DO : use Spring Security
-    // request.setAttribute("cookieContent", claims);
-
-    // return true;
-    // } catch (Exception e){
-    // throw new UnauthorizedException("Invalid or expired token");
-    // }
-    // }
-
     @Override
-    public boolean preHandle(HttpServletRequest req, HttpServletResponse res, Object handler){
+    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
+        Cookie[] cookies = request.getCookies();
 
-        Cookie[] cookies = req.getCookies();
+        try {
+            // Extract auth_token from cookies (will throw if cookies is null or empty)
+            Cookie cookie = Arrays.stream(cookies)
+                .filter(item -> item.getName().equals("auth_token"))
+                .findFirst()
+                .get();
 
-        Cookie authCookie = Arrays.stream(cookies).filter(o -> o.getName() == "auth_token").findFirst().get();
+            Claims claims = this.jwtService.decodeToken(cookie.getValue());
 
-        Claims decodedCookie = this.jwtService.decodeToken(authCookie.getValue());
+            // Now insert cookie content (proper claims object) into the request
+            // TO DO : use Spring Security
+            request.setAttribute("cookieContent", claims);
 
-        req.setAttribute("decodedCookie", decodedCookie);
-
-        return true;
+            return true;
+        } catch (Exception e){
+            throw new UnauthorizedException("Invalid or expired token");
+        }
     }
 }
