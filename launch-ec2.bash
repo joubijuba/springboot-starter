@@ -20,7 +20,7 @@ ssh -i ./myKey.pem ubuntu@$AWS_EC2_IP "aws ecr get-login-password --region $AWS_
 ssh -i ./myKey.pem ubuntu@$AWS_EC2_IP "sudo docker pull $IMAGE_TAG"
 
 # Finally launch the docker containers (-d to run in background)
-ssh -i ./myKey.pem ubuntu@$AWS_EC2_IP "sudo docker compose -f docker-compose.prod.yml up --build -d"
+ssh -i ./myKey.pem ubuntu@$AWS_EC2_IP "sudo docker compose -f docker-compose.prod.yml up -d"
 
 
 ## IMPORTANT : docker commands need "sudo" as long as the Ubuntu user is not given root rights (in user_data script in aws_instance main.tf)
