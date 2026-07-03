@@ -3,7 +3,7 @@
 # Tells bash to stop executing at first error encountered
 set -e
 
-AWS_EC2_IP="51.20.37.115" # from terraform output after deploying
+AWS_EC2_IP="56.228.10.68" # from terraform output after deploying
 AWS_ACCOUNT_ID=$(aws sts get-caller-identity --query Account --output text)
 
 IMAGE_TAG="$AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/$AWS_ECR_NAME:latest" 

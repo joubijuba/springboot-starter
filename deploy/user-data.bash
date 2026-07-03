@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# Create a .env file to store application's environment variables
 touch /home/ubuntu/.env
 cat > /home/ubuntu/.env <<EOF
 POSTGRES_USER=${postgres_user}
@@ -25,7 +26,7 @@ curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/doc
 chmod a+r /etc/apt/keyrings/docker.asc
 
 # Add Docker official repository. DOCKEREOF tells Bash to keep $VAL as plain strings
-# so that they will be set in the EC2 instance and not here on our machine
+# so that their value will be set in the EC2 instance and not here on our machine
 cat > /etc/apt/sources.list.d/docker.sources <<DOCKEREOF
 Types: deb
 URIs: https://download.docker.com/linux/ubuntu
