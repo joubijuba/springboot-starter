@@ -5,15 +5,14 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import app.interceptors.AuthInterceptor;
-import core.services.JwtService;
 
 @Configuration
 public class InterceptorsConfig implements WebMvcConfigurer {
 
-    private final JwtService jwtService;
+    private final AuthInterceptor authInterceptor;
 
-    public InterceptorsConfig(JwtService jwtService) {
-        this.jwtService = jwtService;
+    public InterceptorsConfig(AuthInterceptor authInterceptor) {
+        this.authInterceptor = authInterceptor;
     }
 
     /**
@@ -22,6 +21,6 @@ public class InterceptorsConfig implements WebMvcConfigurer {
      */
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(new AuthInterceptor(jwtService)).addPathPatterns("/products/**");
+        registry.addInterceptor(this.authInterceptor).addPathPatterns("/products/**");
     }
 }

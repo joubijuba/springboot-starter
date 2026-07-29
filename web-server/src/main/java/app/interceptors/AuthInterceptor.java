@@ -2,6 +2,7 @@ package app.interceptors;
 
 import java.util.Arrays;
 
+import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 
 import app.exceptions.UnauthorizedException;
@@ -14,6 +15,7 @@ import jakarta.servlet.http.HttpServletResponse;
 /**
  * Interceptor to verify JWT token from the "auth_token" cookie. Applied to guarded routes declared in InterceptorsConfig.java
  */
+@Component // To make instance of AuthInterceptor a bean
 public class AuthInterceptor implements HandlerInterceptor {
 
     private final JwtService jwtService;
